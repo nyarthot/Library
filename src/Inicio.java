@@ -112,7 +112,7 @@ public class Inicio extends javax.swing.JFrame {
         });
 
         buttons5.setBackground(new java.awt.Color(28, 40, 51));
-        buttons5.setText("Registrar Libro");
+        buttons5.setText("Donar un libro");
         buttons5.setColorHover(new java.awt.Color(37, 52, 65));
         buttons5.setColorNormal(new java.awt.Color(28, 40, 51));
         buttons5.setColorPressed(new java.awt.Color(28, 40, 51));
@@ -173,11 +173,15 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_buttons1ActionPerformed
 
     private void buttons4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttons4ActionPerformed
-        // TODO add your handling code here:
+        Formulario o = new Formulario();
+       o.setVisible(true);
+       this.setVisible(false);
     }//GEN-LAST:event_buttons4ActionPerformed
 
     private void buttons5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttons5ActionPerformed
-        // TODO add your handling code here:
+        Registro ho = new Registro();
+       ho.setVisible(true);
+       this.setVisible(false);
     }//GEN-LAST:event_buttons5ActionPerformed
 
     private void buttons2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttons2ActionPerformed

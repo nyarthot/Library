@@ -124,9 +124,9 @@ public class Registro extends javax.swing.JFrame {
         jPanel8Layout.setHorizontalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
-                .addGap(33, 33, 33)
+                .addContainerGap()
                 .addComponent(jLabel3)
-                .addGap(193, 193, 193)
+                .addGap(220, 220, 220)
                 .addComponent(buttons16, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(buttons15, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -134,12 +134,12 @@ public class Registro extends javax.swing.JFrame {
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(buttons15, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
-                .addContainerGap(7, Short.MAX_VALUE)
-                .addComponent(jLabel3)
-                .addGap(14, 14, 14))
+            .addComponent(buttons15, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
             .addComponent(buttons16, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         jPanel1.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, -1));
@@ -154,14 +154,14 @@ public class Registro extends javax.swing.JFrame {
                 buttons1ActionPerformed(evt);
             }
         });
-        jPanel1.add(buttons1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 240, 80, -1));
+        jPanel1.add(buttons1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 80, -1));
 
         buttons2.setBackground(new java.awt.Color(28, 40, 51));
         buttons2.setText("Registrar");
         buttons2.setColorHover(new java.awt.Color(37, 52, 65));
         buttons2.setColorNormal(new java.awt.Color(28, 40, 51));
         buttons2.setColorPressed(new java.awt.Color(28, 40, 51));
-        jPanel1.add(buttons2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 240, 80, -1));
+        jPanel1.add(buttons2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 230, 80, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

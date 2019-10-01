@@ -3,7 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
+import java.awt.Shape;
+import java.awt.geom.RoundRectangle2D;
 /**
  *
  * @author choco
@@ -15,6 +16,9 @@ public class panel extends javax.swing.JFrame {
      */
     public panel() {
         initComponents();
+        int x,y;
+        setLocationRelativeTo(null);
+        Shape forma = new RoundRectangle2D.Double(0,0, this.getBounds().width,this.getBounds().height,27,27);
     }
 
     /**
@@ -27,8 +31,6 @@ public class panel extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jTextField1 = new javax.swing.JTextField();
@@ -39,20 +41,14 @@ public class panel extends javax.swing.JFrame {
         buttons14 = new u2c31.buttons();
         buttons15 = new u2c31.buttons();
         jLabel3 = new javax.swing.JLabel();
+        buttons1 = new u2c31.buttons();
+        buttons2 = new u2c31.buttons();
+        buttons3 = new u2c31.buttons();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(212, 212, 213));
         jPanel1.setPreferredSize(new java.awt.Dimension(650, 500));
-
-        jButton1.setText("Registrate");
-
-        jButton2.setText("Donar un libro");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -110,7 +106,7 @@ public class panel extends javax.swing.JFrame {
         jPanel8Layout.setHorizontalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
-                .addGap(33, 33, 33)
+                .addContainerGap()
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(buttons14, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -126,6 +122,29 @@ public class panel extends javax.swing.JFrame {
                 .addComponent(jLabel3)
                 .addGap(14, 14, 14))
         );
+
+        buttons1.setBackground(new java.awt.Color(28, 40, 51));
+        buttons1.setText("Registro");
+        buttons1.setColorHover(new java.awt.Color(37, 52, 65));
+        buttons1.setColorNormal(new java.awt.Color(28, 40, 51));
+        buttons1.setColorPressed(new java.awt.Color(28, 40, 51));
+
+        buttons2.setBackground(new java.awt.Color(28, 40, 51));
+        buttons2.setText("Donar un libro");
+        buttons2.setColorHover(new java.awt.Color(37, 52, 65));
+        buttons2.setColorNormal(new java.awt.Color(28, 40, 51));
+        buttons2.setColorPressed(new java.awt.Color(28, 40, 51));
+
+        buttons3.setBackground(new java.awt.Color(28, 40, 51));
+        buttons3.setText("Volver");
+        buttons3.setColorHover(new java.awt.Color(37, 52, 65));
+        buttons3.setColorNormal(new java.awt.Color(28, 40, 51));
+        buttons3.setColorPressed(new java.awt.Color(28, 40, 51));
+        buttons3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttons3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -148,10 +167,13 @@ public class panel extends javax.swing.JFrame {
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 453, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(195, 195, 195)
-                        .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2)))
+                        .addGap(159, 159, 159)
+                        .addComponent(buttons1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(buttons2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(buttons3, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(94, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -168,11 +190,13 @@ public class panel extends javax.swing.JFrame {
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addContainerGap(71, Short.MAX_VALUE))
+                    .addComponent(buttons1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttons2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addComponent(buttons3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -189,12 +213,6 @@ public class panel extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-       Registro ho = new Registro();
-       ho.setVisible(true);
-       this.setVisible(false);
-    }//GEN-LAST:event_jButton2ActionPerformed
-
     private void buttons14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttons14ActionPerformed
         this.setState(panel.ICONIFIED);
     }//GEN-LAST:event_buttons14ActionPerformed
@@ -202,6 +220,12 @@ public class panel extends javax.swing.JFrame {
     private void buttons15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttons15ActionPerformed
           dispose();
     }//GEN-LAST:event_buttons15ActionPerformed
+
+    private void buttons3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttons3ActionPerformed
+        Inicio cho = new Inicio();
+        cho.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_buttons3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -239,10 +263,11 @@ public class panel extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private u2c31.buttons buttons1;
     private u2c31.buttons buttons14;
     private u2c31.buttons buttons15;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private u2c31.buttons buttons2;
+    private u2c31.buttons buttons3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

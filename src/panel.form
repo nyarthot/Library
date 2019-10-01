@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+<Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
   </Properties>
@@ -306,6 +306,9 @@
               <Color blue="33" green="28" red="1c" type="rgb"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttons1ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="u2c31.buttons" name="buttons2">
           <Properties>
@@ -323,6 +326,9 @@
               <Color blue="33" green="28" red="1c" type="rgb"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttons2ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="u2c31.buttons" name="buttons3">
           <Properties>

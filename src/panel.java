@@ -128,12 +128,22 @@ public class panel extends javax.swing.JFrame {
         buttons1.setColorHover(new java.awt.Color(37, 52, 65));
         buttons1.setColorNormal(new java.awt.Color(28, 40, 51));
         buttons1.setColorPressed(new java.awt.Color(28, 40, 51));
+        buttons1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttons1ActionPerformed(evt);
+            }
+        });
 
         buttons2.setBackground(new java.awt.Color(28, 40, 51));
         buttons2.setText("Donar un libro");
         buttons2.setColorHover(new java.awt.Color(37, 52, 65));
         buttons2.setColorNormal(new java.awt.Color(28, 40, 51));
         buttons2.setColorPressed(new java.awt.Color(28, 40, 51));
+        buttons2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttons2ActionPerformed(evt);
+            }
+        });
 
         buttons3.setBackground(new java.awt.Color(28, 40, 51));
         buttons3.setText("Volver");
@@ -226,6 +236,18 @@ public class panel extends javax.swing.JFrame {
         cho.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_buttons3ActionPerformed
+
+    private void buttons1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttons1ActionPerformed
+        Formulario ho = new Formulario();
+        ho.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_buttons1ActionPerformed
+
+    private void buttons2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttons2ActionPerformed
+        Registro o = new Registro();
+        o.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_buttons2ActionPerformed
 
     /**
      * @param args the command line arguments

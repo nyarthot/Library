@@ -7,7 +7,12 @@ package Frames;
 
 import java.awt.Shape;
 import java.awt.geom.RoundRectangle2D;
-
+import clases.conexion; //instancia del paquete para poder utilizar su clase
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  *
  * @author User
@@ -24,7 +29,8 @@ public class panelp extends javax.swing.JFrame {
         Shape forma = new RoundRectangle2D.Double(0,0, this.getBounds().width,this.getBounds().height,27,27);
   
     }
-
+        conexion con = new conexion(); // aqui instancio un objeto (ambito scope) global.
+        
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -39,13 +45,14 @@ public class panelp extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jTextField1 = new javax.swing.JTextField();
+        autor = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        option = new javax.swing.JButton();
         botonregistro = new javax.swing.JButton();
         botonini = new javax.swing.JButton();
+        window_modify = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -97,6 +104,12 @@ public class panelp extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
+        autor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                autorActionPerformed(evt);
+            }
+        });
+
         jLabel1.setBackground(new java.awt.Color(0, 0, 0));
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Autor:");
@@ -105,15 +118,20 @@ public class panelp extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Titulo:");
 
-        jButton1.setBackground(new java.awt.Color(2, 30, 55));
-        jButton1.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Buscar ");
+        option.setBackground(new java.awt.Color(2, 30, 55));
+        option.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
+        option.setForeground(new java.awt.Color(255, 255, 255));
+        option.setText("Buscar ");
+        option.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                optionActionPerformed(evt);
+            }
+        });
 
         botonregistro.setBackground(new java.awt.Color(2, 30, 55));
         botonregistro.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         botonregistro.setForeground(new java.awt.Color(255, 255, 255));
-        botonregistro.setText("Registrar libro nuebo");
+        botonregistro.setText("Registrar libro nuevo");
         botonregistro.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 botonregistroMouseClicked(evt);
@@ -130,6 +148,16 @@ public class panelp extends javax.swing.JFrame {
             }
         });
 
+        window_modify.setBackground(new java.awt.Color(2, 30, 55));
+        window_modify.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
+        window_modify.setForeground(new java.awt.Color(255, 255, 255));
+        window_modify.setText("Modificar libro");
+        window_modify.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                window_modifyActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -142,7 +170,7 @@ public class panelp extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 453, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(autor, javax.swing.GroupLayout.PREFERRED_SIZE, 453, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -151,9 +179,11 @@ public class panelp extends javax.swing.JFrame {
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(jTextField2)
                                         .addGroup(jPanel1Layout.createSequentialGroup()
-                                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(option, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addGap(18, 18, 18)
                                             .addComponent(botonregistro)
+                                            .addGap(51, 51, 51)
+                                            .addComponent(window_modify)
                                             .addGap(0, 0, Short.MAX_VALUE)))))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(17, 17, 17)
@@ -165,16 +195,18 @@ public class panelp extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(89, 89, 89)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(autor, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
                 .addGap(21, 21, 21)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(botonregistro))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(option)
+                        .addComponent(botonregistro))
+                    .addComponent(window_modify, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
@@ -207,14 +239,29 @@ public class panelp extends javax.swing.JFrame {
     private void botonregistroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonregistroMouseClicked
         Registrop ho = new Registrop();
        ho.setVisible(true);
-       this.setVisible(false);
+       this.setVisible(false); 
     }//GEN-LAST:event_botonregistroMouseClicked
 
     private void botoniniMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botoniniMouseClicked
         Iniciop cho = new Iniciop();
         cho.setVisible(true);
         this.setVisible(false);
+       
     }//GEN-LAST:event_botoniniMouseClicked
+
+    private void optionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_optionActionPerformed
+    
+    }//GEN-LAST:event_optionActionPerformed
+
+    private void autorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_autorActionPerformed
+        
+     
+    }//GEN-LAST:event_autorActionPerformed
+
+    private void window_modifyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_window_modifyActionPerformed
+   modificar modify= new modificar();
+   modify.setVisible(true);
+    }//GEN-LAST:event_window_modifyActionPerformed
 
     /**
      * @param args the command line arguments
@@ -252,9 +299,9 @@ public class panelp extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField autor;
     private javax.swing.JButton botonini;
     private javax.swing.JButton botonregistro;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -262,7 +309,8 @@ public class panelp extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
+    private javax.swing.JButton option;
+    private javax.swing.JButton window_modify;
     // End of variables declaration//GEN-END:variables
 }

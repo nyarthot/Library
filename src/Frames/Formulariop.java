@@ -5,6 +5,7 @@
  */
 package Frames;
 
+
 import java.awt.Shape;
 import java.awt.geom.RoundRectangle2D;
 
@@ -127,6 +128,11 @@ public class Formulariop extends javax.swing.JFrame {
                 botoniniMouseClicked(evt);
             }
         });
+        botonini.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botoniniActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -232,6 +238,10 @@ public class Formulariop extends javax.swing.JFrame {
     private void botongenerarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botongenerarMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_botongenerarMouseClicked
+
+    private void botoniniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botoniniActionPerformed
+    
+    }//GEN-LAST:event_botoniniActionPerformed
 
     /**
      * @param args the command line arguments

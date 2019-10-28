@@ -7,13 +7,18 @@ package Frames;
 
 import java.awt.Shape;
 import java.awt.geom.RoundRectangle2D;
-
+import clases.conexion;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
 /**
  *
  * @author User
  */
 public class Registrop extends javax.swing.JFrame {
-
+conexion con= new conexion();
     /**
      * Creates new form Registrop
      */
@@ -35,8 +40,8 @@ public class Registrop extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        titulo = new javax.swing.JTextField();
+        autor = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
@@ -50,14 +55,14 @@ public class Registrop extends javax.swing.JFrame {
         jPanel1.setMinimumSize(new java.awt.Dimension(300, 500));
         jPanel1.setPreferredSize(new java.awt.Dimension(300, 500));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 160, 210, -1));
+        jPanel1.add(titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 160, 210, -1));
 
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        autor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                
+                autorActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, 210, -1));
+        jPanel1.add(autor, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, 210, -1));
 
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
@@ -71,9 +76,6 @@ public class Registrop extends javax.swing.JFrame {
 
         jPanel8.setBackground(new java.awt.Color(28, 40, 51));
         jPanel8.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                
-            }
         });
 
         jLabel3.setBackground(new java.awt.Color(0, 0, 0));
@@ -107,6 +109,11 @@ public class Registrop extends javax.swing.JFrame {
         botonregistro.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 botonregistroMouseClicked(evt);
+            }
+        });
+        botonregistro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonregistroActionPerformed(evt);
             }
         });
         jPanel1.add(botonregistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 210, -1, -1));
@@ -146,6 +153,35 @@ public class Registrop extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_botoniniMouseClicked
 
+    private void botonregistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonregistroActionPerformed
+        //las variables de los libros son globales en el metodo para que puedan ser accedidas cualquier parte del metodo
+       String t=titulo.getText();
+       String a= autor.getText();
+    if((titulo.getText().equals("")||autor.getText().equals(""))||(titulo.getText().equals("")&& autor.getText().equals(""))){
+        JOptionPane.showMessageDialog(this, "falto llenar campos");
+    } else {
+         try {// todo esto se introduce dentro de un bloque try catch
+       
+       String sql_q="INSERT INTO libros VALUES(NULL,?,?)"; 
+       //PreparedStatement evita inyecciones sql, y agregamos el campo de id tambien como el
+       //primer campo y lo pasamos a NULL porque ya es autoincremento automatico.
+       
+     PreparedStatement query= con.get().prepareStatement(sql_q);
+     query.setString(1, t);// aqui lo hacemos de esta forma porque es la mas limpia de hacerlo, aunque
+     query.setString(2, a); //se pudo haber hecho desde PreparedStatement en especificacion de values pero por seguridad en la base de datos lo hacemos asi
+      
+     int resulta=  query.executeUpdate();
+      if(resulta==1){
+      JOptionPane.showMessageDialog(this, "El libro "+" "+t+" "+ "registrado"+" "+ "exitosamente");
+      query.close(); con.conn.close();
+      }
+    }catch (SQLException ex) {
+        System.out.println(ex.getMessage());
+    }
+         
+    } 
+    }//GEN-LAST:event_botonregistroActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -182,6 +218,7 @@ public class Registrop extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField autor;
     private javax.swing.JButton botonini;
     private javax.swing.JButton botonregistro;
     private javax.swing.JLabel jLabel1;
@@ -189,7 +226,6 @@ public class Registrop extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel8;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField titulo;
     // End of variables declaration//GEN-END:variables
 }

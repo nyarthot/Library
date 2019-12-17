@@ -27,7 +27,7 @@ public class panelp extends javax.swing.JFrame {
         int x,y;
         setLocationRelativeTo(null);
         Shape forma = new RoundRectangle2D.Double(0,0, this.getBounds().width,this.getBounds().height,27,27);
-  
+       close();
     }
         conexion con = new conexion(); // aqui instancio un objeto (ambito scope) global.
         
@@ -258,6 +258,12 @@ public class panelp extends javax.swing.JFrame {
      
     }//GEN-LAST:event_autorActionPerformed
 
+    public void close(){
+        Iniciop init= new Iniciop();
+        init.setVisible(true);
+        this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+    }
+    
     private void window_modifyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_window_modifyActionPerformed
    modificar modify= new modificar();
    modify.setVisible(true);

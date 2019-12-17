@@ -73,9 +73,9 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="botonregistro" min="-2" max="-2" attributes="0"/>
                       <Component id="botonformulario" min="-2" pref="149" max="-2" attributes="0"/>
-                      <Component id="botonpanel" min="-2" pref="149" max="-2" attributes="0"/>
+                      <Component id="botonpanel" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="107" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>

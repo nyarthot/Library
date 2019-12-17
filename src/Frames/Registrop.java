@@ -27,7 +27,7 @@ conexion con= new conexion();
         int x,y;
         setLocationRelativeTo(null);
         Shape forma = new RoundRectangle2D.Double(0,0, this.getBounds().width,this.getBounds().height,27,27);
-   
+        close();
     }
 
     /**
@@ -76,6 +76,9 @@ conexion con= new conexion();
 
         jPanel8.setBackground(new java.awt.Color(28, 40, 51));
         jPanel8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jPanel8MousePressed(evt);
+            }
         });
 
         jLabel3.setBackground(new java.awt.Color(0, 0, 0));
@@ -181,7 +184,11 @@ conexion con= new conexion();
          
     } 
     }//GEN-LAST:event_botonregistroActionPerformed
-
+public void close(){
+Iniciop init= new Iniciop();
+init.setVisible(true);
+this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+}
     /**
      * @param args the command line arguments
      */

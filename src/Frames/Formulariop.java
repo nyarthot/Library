@@ -23,8 +23,10 @@ public class Formulariop extends javax.swing.JFrame {
          int x,y;
         setLocationRelativeTo(null);
         Shape forma = new RoundRectangle2D.Double(0,0, this.getBounds().width,this.getBounds().height,27,27);
+        Close();
     }
-
+   public void Close(){ Iniciop iniT=new Iniciop(); iniT.setVisible(true);
+           this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
